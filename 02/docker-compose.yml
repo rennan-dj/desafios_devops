@@ -1,0 +1,20 @@
+
+#criação do banco de dados
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: superuser
+      MYSQL_DATABASE: desafio_02
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    
+    volumes: 
+        - ./database-data:/docker-entrypoint-initdb.d
+
+    ports:
+      - 3306:3306
