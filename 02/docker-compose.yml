@@ -7,7 +7,7 @@ services:
   db:
     image: mariadb
     restart: always
-    container_name: mariadb
+    container_name: db
 
 # passando as variaveis de ambiente 
     environment:
@@ -29,16 +29,15 @@ services:
     image: phpmyadmin
     restart: always
 
-# realizando referencia com o banco de dados
+# Referencia ao Banco de Dados
     links:
-      - mariadb
+      - db
 
 # passando as variaveis de ambiente
     environment:
-      PMA_HOST: mariadb
+      PMA_HOST: db
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
 
-# realizando o bind de portas 
     ports:
       - 8080:80
